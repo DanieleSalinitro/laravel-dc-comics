@@ -14,8 +14,15 @@ use App\Http\Controllers\ComicController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 Route::resource('/comics', ComicController::class);
 
+Route::get('/', function () {
+    $headerOptions = config('db.headerOptions');
+    $footerMenu = config('db.footerMenu');
+    return view('home', compact('headerOptions','footerMenu'));
+})->name('home');
+
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
