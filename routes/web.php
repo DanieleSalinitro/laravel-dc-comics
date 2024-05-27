@@ -13,16 +13,12 @@ use App\Http\Controllers\ComicController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::resource('/comics', ComicController::class);
-
 Route::get('/', function () {
-    $headerOptions = config('db.headerOptions');
-    $footerMenu = config('db.footerMenu');
-    return view('home', compact('headerOptions','footerMenu'));
+    return view('home');
 })->name('home');
-
 
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::resource('comics', ComicController::class);
